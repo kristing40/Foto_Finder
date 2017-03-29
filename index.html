@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Foto Finder</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" width="width-device-width,  initial-scale=1" />
     <link href="CSS/reset.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet">
     <link href="CSS/styles.css" rel="stylesheet" type="text/css" />
@@ -12,7 +12,9 @@
   <body>
     <section id="top-half">
       <header>
-        <h1>foto<img class="logo-img" src="photos/foto-finder-logo.svg"  alt="foto-finder logo"/><span class="finder-text">finder</span></h1>
+
+        <h1>foto<img class="logo-img" src="photos/foto-finder-logo.svg"     alt="foto-finder logo"/><span class="finder-text">finder</span></h1>
+      
       </header>
       <section id="input-section">
         <label for="title" id="title">Title</label>
@@ -22,9 +24,9 @@
         <input type="text" id="caption" class="input-caption input-field" />
 
         <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple/>
-        <label for="file">Choose a file</label>
+        <label for="file"><span>Choose a file</span></label>
 
-        <input type="submit" value="Add to Album" class="input-btn" />
+        <input type="submit" value="Add to Album" class="input-btn add-to-album-btn" />
       </section><!--END INPUT-SECTION-->
     </section><!--END TOP HALF-->
     <main id="photo-display-area">
