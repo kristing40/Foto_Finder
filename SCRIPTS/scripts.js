@@ -1,4 +1,4 @@
-// disableState();
+
 
 /****Event Listeners****/
 $('.add-to-album-btn').on('click', function() {
@@ -7,6 +7,8 @@ $('.add-to-album-btn').on('click', function() {
 	var $inputFile = $('.inputfile').val();
 	var $newFile = $inputFile.replace(/C:\\fakepath\\/i, '');
 	photoCard($inputTitle, $newFile, $inputCaption);
+	$('#photo-display-area h3').remove();
+
 });
 
 $('.input-field').on('input', function() {
@@ -18,7 +20,6 @@ $('.inputfile').on('change', function() {
 });
 
 
-
 /****Functions****/
 function photoCard ($inputTitle, $newFile, $inputCaption) {
 	$('#photo-display-area').append(`<article class="photo-card">
@@ -28,7 +29,7 @@ function photoCard ($inputTitle, $newFile, $inputCaption) {
 			</section>
 			<p class="photo-card-caption">${$inputCaption}</p>
 			<div class="photo-card-bottom">
-				<input type="image" src="photos/delete.svg" class="photo-card-delete-img delete-active-state" />
+				<div class="photo-card-delete-img"></div>
 				<input type="image" src="photos/favorite.svg" class="photo-card-fav-img" />
 			</div>
 			</article>`);
@@ -37,7 +38,7 @@ function photoCard ($inputTitle, $newFile, $inputCaption) {
 			chooseFavoritePhoto();
 }
 
-function deletePhotoCard () {
+function deletePhotoCard() {
 	$('.photo-card-delete-img').on('click', function() {
 		$(this).closest('.photo-card').remove();
 		// $(this).toggleClass('delete-active-state');
@@ -49,10 +50,10 @@ function deletePhotoCard () {
 	});
 }
 
-function chooseFavoritePhoto () {
+function chooseFavoritePhoto() {
 	$('.photo-card-fav-img').on('click', function() {
 		$(this).attr('src', 'photos/favorite-active.svg');
-		$(this).parents('.photo-card').css('background-color', 'ocean');
+		$(this).parents('.photo-card').css('background-color', '#a0d6b4');
 	});
 }
 
@@ -61,11 +62,17 @@ function disableEnableState() {
 	var $inputCaption = $('.input-caption').val();
 	var $inputFile = $('.inputfile').val();
 
-	if ( $inputTitle === '' && $inputCaption	=== '' && $inputFile === '') {
+	if ( $inputTitle === '' || $inputCaption	=== '' || $inputFile === '') {
 		$('.add-to-album-btn').prop('disabled', true);
 	} else {
 		$('.add-to-album-btn').prop('disabled', false);
 	}
+}
+
+message();
+function message() {
+	$('#photo-display-area').append(`<h3>Add your selection to the photo gallery</h3>`);
+
 }
 
 

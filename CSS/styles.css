@@ -170,11 +170,12 @@ input {
 
 .photo-card-delete-img {
   position: absolute;
-  bottom: 0;
+  bottom: 16px;
   left: 10px;
+  background-image: url(../photos/delete.svg);
 }
 
-.delete-active-state:hover {
+.photo-card-delete-img:hover {
   background-image: url(../photos/delete-active.svg);
 }
 
@@ -186,6 +187,12 @@ input {
 
 
 /****MEDIA QUERIES****/
+@media only screen and  (max-width: 320px) {
+  .photo-card {
+    max-width: 95%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   h1,
   .finder-text {
