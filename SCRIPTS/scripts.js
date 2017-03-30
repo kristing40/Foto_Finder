@@ -7,8 +7,7 @@ $('.add-to-album-btn').on('click', function() {
 	var $inputFile = $('.inputfile').val();
 	var $newFile = $inputFile.replace(/C:\\fakepath\\/i, '');
 	photoCard($inputTitle, $newFile, $inputCaption);
-	$('#photo-display-area h3').remove();
-
+	$('#photo-display-area h2').remove();
 });
 
 $('.input-field').on('input', function() {
@@ -71,8 +70,7 @@ function disableEnableState() {
 
 message();
 function message() {
-	$('#photo-display-area').append(`<h3>Add your selection to the photo gallery</h3>`);
-
+	$('#photo-display-area').append(`<h2>Add your selection to the photo gallery</h2>`);
 }
 
 

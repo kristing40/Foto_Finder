@@ -114,6 +114,7 @@ input {
   max-width: 300px;
   height: 400px;
   display: inline-block;
+  vertical-align: top;
   background: #fff;
   border: 1px solid #938284;
   margin: 15px;
@@ -170,7 +171,7 @@ input {
 
 .photo-card-delete-img {
   position: absolute;
-  bottom: 16px;
+  bottom: 15px;
   left: 10px;
   background-image: url(../photos/delete.svg);
 }
@@ -187,9 +188,12 @@ input {
 
 
 /****MEDIA QUERIES****/
-@media only screen and  (max-width: 320px) {
+@media only screen and  (max-width: 400px) {
+  #input-section, #photo-dispay-area {
+    width: 90%;
+  }
   .photo-card {
-    max-width: 95%;
+    max-width: 100%;
   }
 }
 
