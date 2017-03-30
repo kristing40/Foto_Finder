@@ -1,35 +1,75 @@
-/****Global Variables****/
-var $addToAlbumBtn = $('.add-to-album-btn');
-
+// disableState();
 
 /****Event Listeners****/
-$addToAlbumBtn.on('click', function() {
-	console.log(this);
+$('.add-to-album-btn').on('click', function() {
 	var $inputTitle = $('.input-title').val();
-	console.log($inputTitle)
 	var $inputCaption = $('.input-caption').val();
-	console.log($inputCaption)
 	var $inputFile = $('.inputfile').val();
-	console.log($inputFile)
+	var $newFile = $inputFile.replace(/C:\\fakepath\\/i, '');
+	photoCard($inputTitle, $newFile, $inputCaption);
+});
 
-	photoCard($inputTitle, $inputCaption);
+$('.input-field').on('input', function() {
+	  disableEnableState();
+});
+
+$('.inputfile').on('change', function() {
+		disableEnableState();
 });
 
 
+
 /****Functions****/
-function photoCard () {
+function photoCard ($inputTitle, $newFile, $inputCaption) {
 	$('#photo-display-area').append(`<article class="photo-card">
-			<p class="photo-card-title">${'$inputTitle'}<p>
-			<img class="photo-card-img" src=""/>
-			<p class="photo-card-caption">${'$inputCaption'}</p>
+			<p class="photo-card-title">${$inputTitle}</p>
+			<section id="photo-card-img-area">
+				<img src="photos/${$newFile}" alt="puppies" class="photo-card-img"/>
+			</section>
+			<p class="photo-card-caption">${$inputCaption}</p>
 			<div class="photo-card-bottom">
-				<input type="image" src="photos/delete.svg" class="photo-card-delete-btn" />
-				<input type="image" src="photos/favorite.svg" class="photo-card-fav-btn" />
+				<input type="image" src="photos/delete.svg" class="photo-card-delete-img delete-active-state" />
+				<input type="image" src="photos/favorite.svg" class="photo-card-fav-img" />
 			</div>
 			</article>`);
+
+			deletePhotoCard();
+			chooseFavoritePhoto();
 }
 
-/****Input File Button****/
+function deletePhotoCard () {
+	$('.photo-card-delete-img').on('click', function() {
+		$(this).closest('.photo-card').remove();
+		// $(this).toggleClass('delete-active-state');
+		if($(this).attr("src") == "photos/delete.svg"){
+			$(this).attr("src", "photos/delete-active.svg");
+		}else{
+			$(this).attr("src", "photos/delete.svg");
+		}
+	});
+}
+
+function chooseFavoritePhoto () {
+	$('.photo-card-fav-img').on('click', function() {
+		$(this).attr('src', 'photos/favorite-active.svg');
+		$(this).parents('.photo-card').css('background-color', 'ocean');
+	});
+}
+
+function disableEnableState() {
+	var $inputTitle = $('.input-title').val();
+	var $inputCaption = $('.input-caption').val();
+	var $inputFile = $('.inputfile').val();
+
+	if ( $inputTitle === '' && $inputCaption	=== '' && $inputFile === '') {
+		$('.add-to-album-btn').prop('disabled', true);
+	} else {
+		$('.add-to-album-btn').prop('disabled', false);
+	}
+}
+
+
+/****Input File****/
 var inputs = document.querySelectorAll( '.inputfile' );
 Array.prototype.forEach.call( inputs, function( input )
 {
@@ -42,7 +82,7 @@ Array.prototype.forEach.call( inputs, function( input )
 		if( this.files && this.files.length > 1 )
 			fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
 		else
-			fileName = e.target.value.split( '\\' ).pop();
+			fileName = e.target.value.split( '\\' ).pop();;
 
 		if( fileName )
 			label.querySelector('span').innerHTML = fileName;
@@ -50,3 +90,7 @@ Array.prototype.forEach.call( inputs, function( input )
 			label.innerHTML = labelVal;
 	});
 });
+
+// $(window).load(function() {
+// 	disableState();
+// });

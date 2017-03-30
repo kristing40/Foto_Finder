@@ -10,28 +10,28 @@
     <link href="CSS/styles.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <section id="top-half">
-      <header>
+    <section id="container">
+      <section id="top-half">
+        <header>
+          <h1>foto<img class="logo-img" src="photos/foto-finder-logo.svg"     alt="foto-finder logo"/><span class="finder-text">finder</span></h1>
+        </header>
+        <section id="input-section">
+          <label for="title" id="title">Title</label>
+          <input type="text" id="title" class="input-title input-field"/>
 
-        <h1>foto<img class="logo-img" src="photos/foto-finder-logo.svg"     alt="foto-finder logo"/><span class="finder-text">finder</span></h1>
-      
-      </header>
-      <section id="input-section">
-        <label for="title" id="title">Title</label>
-        <input type="text" id="title" class="input-title input-field"/>
+          <label for="caption" id="caption">Caption</label>
+          <input type="text" id="caption" class="input-caption input-field"/>
 
-        <label for="caption" id="caption">Caption</label>
-        <input type="text" id="caption" class="input-caption input-field" />
+          <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple accept=".jpeg, .gif, .png, .jpg, .svg"/>
+          <label for="file"><span>Choose a file</span></label>
 
-        <input type="file" name="file" id="file" class="inputfile" data-multiple-caption="{count} files selected" multiple/>
-        <label for="file"><span>Choose a file</span></label>
+          <input type="submit" value="Add to Album" class="input-btn add-to-album-btn" disabled="true"/>
+        </section><!--END INPUT-SECTION-->
+      </section><!--END TOP HALF-->
+      <main id="photo-display-area">
 
-        <input type="submit" value="Add to Album" class="input-btn add-to-album-btn" />
-      </section><!--END INPUT-SECTION-->
-    </section><!--END TOP HALF-->
-    <main id="photo-display-area">
-
-    </main><!--END MAIN-->
+      </main><!--END MAIN-->
+    </section>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="SCRIPTS/scripts.js"></script>
   </body>
